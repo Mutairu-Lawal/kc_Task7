@@ -119,7 +119,7 @@ main {
 }
 
 .img-container {
-  background-color: var(--sec-color);
+  background-color: var(--pry-color);
   height: 300px;
   object-fit: contain;
   width: 100%;

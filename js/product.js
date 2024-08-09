@@ -21,7 +21,8 @@ async function getData() {
   }
 }
 
-export function renderProducts() {
+export function renderProducts(products) {
+  let html = "";
   products.forEach((product) => {
     const {
       image,
@@ -32,24 +33,31 @@ export function renderProducts() {
     } = product;
 
     html += `
+
     <div class="col-12 col-sm-6 col-lg-3 ">
-            <div class="card">
-              <img
-                src='${image}'
-                class="card-img-top img-fluid"
-                alt="${title}-img"
-                height="200"
+            <div class="card h-100">
+              <div class="img-container p-3">
+                <img
+                src="${image}"
+                class="img-fit"
+                alt="product-${title}"
+                
               />
+              </div>
+              
               <div class="card-body">
                 <p class="product-name fw-bolder">${title}</p>
                 <div
                   class="product-rating-details mb-2 d-flex align-items-center"
                 >
+                <div class="rating-icon-container">
                   <img
                     src="./assets/ratings/rating-${convertToTens(rate)}.png"
                     alt="rating-${rate}"
-                    height="30px"
+                    class="img-fit"
                   />
+                </div>
+                  
                   <div class="product-count ms-2 small mt-1">${count}</div>
                 </div>
                 <h4 class="product price fw-bolder mb-1">$${price}</h4>
@@ -63,13 +71,14 @@ export function renderProducts() {
                   Added
                 </div>
                 <button
-                  class="btn bg-black text-white w-100 rounded-pill fw-bold mt-2 dta-product-id=${id}"
+                  class="btn bg-black text-white w-100 rounded-pill fw-bold mt-2 data-product-id=${id}"
                 >
                   Add to cart
                 </button>
               </div>
             </div>
           </div>
+    
     `;
   });
   return html;
