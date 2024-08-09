@@ -1,4 +1,4 @@
-import { products, renderProducts } from "./js/product.js";
+import { products, renderProducts } from "./data/product.js";
 const product1 = [];
 let html = "";
 const menuBtn = document.querySelector(".nav--button");

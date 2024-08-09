@@ -1,8 +1,6 @@
 import { convertToTens } from "../utils/rating.js";
 
 export const products = JSON.parse(localStorage.getItem("data")) || [];
-const copyProduct = [];
-let html = "";
 
 const url = "https://fakestoreapi.com/products";
 
