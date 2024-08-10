@@ -84,7 +84,7 @@ h6,
 
 .nav--cart-icon {
   position: relative;
-  padding: 4px;
+  padding: 2px;
   cursor: pointer;
 }
 
@@ -97,9 +97,9 @@ h6,
   width: 60%;
   height: 60%;
   border-radius: 100%;
-  padding: 3px;
+  padding: 2px;
   font-size: small;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 main {
