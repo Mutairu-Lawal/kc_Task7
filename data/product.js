@@ -1,5 +1,4 @@
 import { convertToTens } from "../utils/rating.js";
-
 const url = "https://fakestoreapi.com/products";
 export const products = [];
 
@@ -12,12 +11,6 @@ export async function getProducts() {
       const data = await res.json();
       data.forEach((product) => {
         products.push(product);
-      });
-
-      products.filter((p) => {
-        return (
-          p.category.includes("clothing") || p.category.includes("jewelery")
-        );
       });
     }
   } catch (er) {
@@ -96,16 +89,14 @@ function getFiveProducts(arr) {
   }
 }
 
-export async function getFeatures(productContainer, fun) {
+export async function getFeatures(displayContainer, fun) {
   const featuresProduct = [];
   const products = await getProducts();
   getFiveProducts(featuresProduct);
-  productContainer.innerHTML = productHTML(featuresProduct);
+  displayContainer.innerHTML = productHTML(featuresProduct);
   fun();
 }
-export async function renderAllProducts(productContainer) {
-  productContainer.innerHTML = "";
-  const products = await getProducts();
-  getFiveProducts(featuresProduct);
-  productContainer.innerHTML = productHTML(featuresProduct);
-}
+
+// products.filter((p) => {
+//   return p.category.includes("clothing") || p.category.includes("jewelery");
+// });
