@@ -28,5 +28,3 @@ export function convertToTens(num) {
 
   return rating;
 }
-
-console.log(convertToTens(3.4));

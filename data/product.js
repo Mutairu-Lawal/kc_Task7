@@ -1,10 +1,12 @@
 import { convertToTens } from "../utils/rating.js";
 
-export const products = JSON.parse(localStorage.getItem("data")) || [];
+// export const products = JSON.parse(localStorage.getItem("data")) || [];
+
+export const products = [];
 
 const url = "https://fakestoreapi.com/products";
 
-async function getData() {
+export async function getData() {
   try {
     const res = await fetch(url);
     if (res.status >= 400) {
