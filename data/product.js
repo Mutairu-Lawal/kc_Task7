@@ -1,11 +1,9 @@
 import { convertToTens } from "../utils/rating.js";
-import { loadFeatureProducts } from "../main.js";
 
 const url = "https://fakestoreapi.com/products";
 export const products = [];
-export const featuresProduct = [];
 
-export async function getData() {
+export async function getProducts() {
   try {
     const res = await fetch(url);
     if (res.status >= 400) {
@@ -15,16 +13,19 @@ export async function getData() {
       data.forEach((product) => {
         products.push(product);
       });
-      getFeaturesProducts();
-      loadFeatureProducts(renderProducts(featuresProduct));
+
+      products.filter((p) => {
+        return (
+          p.category.includes("clothing") || p.category.includes("jewelery")
+        );
+      });
     }
   } catch (er) {
     console.log(er);
   }
 }
 
-getData();
-function renderProducts(products) {
+function productHTML(products) {
   let html = "";
   products.forEach((product) => {
     const {
@@ -61,7 +62,7 @@ function renderProducts(products) {
                   />
                 </div>
                   
-                  <div class="product-count ms-2 small mt-1">${count}</div>
+                  <div class="product-count ms-2 small mt-1 fw-semibold">${count}</div>
                 </div>
                 <h4 class="product price fw-bolder mb-1">$${price.toFixed(
                   2
@@ -89,8 +90,22 @@ function renderProducts(products) {
   return html;
 }
 
-function getFeaturesProducts() {
+function getFiveProducts(arr) {
   for (let i = 0; i <= 4; i++) {
-    featuresProduct.push(products[i]);
+    arr.push(products[i]);
   }
+}
+
+export async function getFeatures(productContainer, fun) {
+  const featuresProduct = [];
+  const products = await getProducts();
+  getFiveProducts(featuresProduct);
+  productContainer.innerHTML = productHTML(featuresProduct);
+  fun();
+}
+export async function renderAllProducts(productContainer) {
+  productContainer.innerHTML = "";
+  const products = await getProducts();
+  getFiveProducts(featuresProduct);
+  productContainer.innerHTML = productHTML(featuresProduct);
 }
