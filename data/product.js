@@ -1,10 +1,9 @@
 import { convertToTens } from "../utils/rating.js";
-
-// export const products = JSON.parse(localStorage.getItem("data")) || [];
-
-export const products = [];
+import { loadFeatureProducts } from "../main.js";
 
 const url = "https://fakestoreapi.com/products";
+export const products = [];
+export const featuresProduct = [];
 
 export async function getData() {
   try {
@@ -13,15 +12,19 @@ export async function getData() {
       throw res;
     } else {
       const data = await res.json();
-      localStorage.setItem("data", JSON.stringify(data));
-      console.log("done");
+      data.forEach((product) => {
+        products.push(product);
+      });
+      getFeaturesProducts();
+      loadFeatureProducts(renderProducts(featuresProduct));
     }
   } catch (er) {
-    console.error("error occur");
+    console.log(er);
   }
 }
 
-export function renderProducts(products) {
+getData();
+function renderProducts(products) {
   let html = "";
   products.forEach((product) => {
     const {
@@ -82,4 +85,10 @@ export function renderProducts(products) {
     `;
   });
   return html;
+}
+
+function getFeaturesProducts() {
+  for (let i = 0; i <= 4; i++) {
+    featuresProduct.push(products[i]);
+  }
 }
