@@ -70,7 +70,7 @@ function productHTML(products) {
                   Added
                 </div>
                 <button
-                  class="btn bg-black text-white w-100 rounded-pill fw-bold mt-2 data-product-id=${id}"
+                  class="btn bg-black text-white w-100 rounded-pill fw-bold mt-2 js-add-to-cart" data-product-id="${id}"
                 >
                   Add to cart
                 </button>

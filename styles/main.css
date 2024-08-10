@@ -173,6 +173,9 @@ main {
 .product-added-status {
   display: none;
 }
+.product-added {
+  display: flex;
+}
 
 /* FOOTER SECTION  */
 
