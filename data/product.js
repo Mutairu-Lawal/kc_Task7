@@ -89,14 +89,9 @@ function getFiveProducts(arr) {
   }
 }
 
-export async function getFeatures(displayContainer, fun) {
+export async function getFeatures(displayContainer) {
   const featuresProduct = [];
   const products = await getProducts();
   getFiveProducts(featuresProduct);
   displayContainer.innerHTML = productHTML(featuresProduct);
-  fun();
 }
-
-// products.filter((p) => {
-//   return p.category.includes("clothing") || p.category.includes("jewelery");
-// });

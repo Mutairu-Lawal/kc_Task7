@@ -1,6 +1,6 @@
 const cart = [];
 
-export function updateCart(cartIcons, cartQuantitys) {
+export function updateCart(cartIcons, cartQuantity) {
   cartIcons.forEach((icon) => {
     icon.addEventListener("click", () => {
       open("./check-out-page.html", "_blank");
