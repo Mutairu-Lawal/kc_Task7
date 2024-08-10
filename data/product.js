@@ -1,6 +1,6 @@
 import { convertToTens } from "../utils/rating.js";
 const url = "https://fakestoreapi.com/products";
-export const products = [];
+const products = [];
 
 export async function getProducts() {
   try {
@@ -94,4 +94,8 @@ export async function getFeatures(displayContainer) {
   const products = await getProducts();
   getFiveProducts(featuresProduct);
   displayContainer.innerHTML = productHTML(featuresProduct);
+}
+export async function renderAllProducts(displayContainer) {
+  const res = await getProducts();
+  displayContainer.innerHTML = productHTML(products);
 }
