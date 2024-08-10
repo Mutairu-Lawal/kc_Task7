@@ -1,4 +1,4 @@
-const cart = [];
+export const cart = [];
 
 export function updateCart(cartIcons, cartQuantity) {
   cartIcons.forEach((icon) => {
@@ -12,4 +12,6 @@ export function updateCart(cartIcons, cartQuantity) {
       cartQuantity.innerHTML = 0;
     });
   }
+
+  cartQuantity.innerHTML = cart.length;
 }

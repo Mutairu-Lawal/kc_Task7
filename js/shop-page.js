@@ -1,4 +1,4 @@
-import { updateCart } from "../data/cart.js";
+import { updateCart, cart } from "../data/cart.js";
 import { renderAllProducts } from "../data/product.js";
 
 const totalCartItems = document.querySelectorAll(".nav--cart-counter");
@@ -18,6 +18,26 @@ function addButtonListener() {
   addToCartButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const { productId } = button.dataset;
+      let matchingItem;
+
+      cart.forEach((item) => {
+        if (productId === item.productId) {
+          matchingItem = item;
+        }
+      });
+
+      if (matchingItem) {
+        // increment quantity
+        matchingItem.quantity++;
+        updateCart(cartIcons, totalCartItems);
+      } else {
+        // add new item
+        cart.push({
+          productId: productId,
+          quantity: 1,
+        });
+      }
+      console.log(cart);
     });
   });
 }
