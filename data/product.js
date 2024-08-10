@@ -38,7 +38,7 @@ function renderProducts(products) {
     html += `
 
     <div class="col-12 col-sm-6 col-lg-3 ">
-            <div class="card h-100">
+            <div class="card h-100 overflow-hidden">
               <div class="img-container p-3">
                 <img
                 src="${image}"
@@ -63,7 +63,9 @@ function renderProducts(products) {
                   
                   <div class="product-count ms-2 small mt-1">${count}</div>
                 </div>
-                <h4 class="product price fw-bolder mb-1">$${price}</h4>
+                <h4 class="product price fw-bolder mb-1">$${price.toFixed(
+                  2
+                )}</h4>
                 <div class="product-added-status text-center my-1 fw-bold">
                   <img
                     width="30"
