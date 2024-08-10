@@ -12,6 +12,7 @@ export async function getProducts() {
       data.forEach((product) => {
         products.push(product);
       });
+      console.log("done");
     }
   } catch (er) {
     console.log(er);
