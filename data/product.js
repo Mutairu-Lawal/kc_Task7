@@ -1,4 +1,3 @@
-// export let Products = JSON.parse(localStorage.getItem("products")) || [];
 export let Products = [];
 const url = "https://fakestoreapi.com/products";
 

@@ -72,7 +72,10 @@ function renderPaymentSummary() {
   });
   productTotal = productTotal.toFixed(2);
   const discountPercentage = (productTotal * 0.1).toFixed(2);
-  const grandTotal = (productTotal - discountPercentage + 15).toFixed(2);
+  const deliveryFee = productTotal <= 0 ? 0 : 15;
+  const grandTotal = (productTotal - discountPercentage + deliveryFee).toFixed(
+    2
+  );
 
   document.querySelector(".js-cart-summary").innerHTML = `
   <div class="c-row d-flex justify-content-between mb-3">
@@ -85,7 +88,7 @@ function renderPaymentSummary() {
                 </div>
                 <div class="c-row d-flex justify-content-between mb-3">
                   <p>Delivery Fee</p>
-                  <p class="fw-bold">$<span>15</span></p>
+                  <p class="fw-bold">$<span>${deliveryFee}</span></p>
                 </div>
                 <hr />
                 <div class="c-row d-flex justify-content-between mb-3">
