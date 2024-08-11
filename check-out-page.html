@@ -107,6 +107,7 @@
           </div>
         </div>
         <div class="row g-3">
+          <!-- SHIPPING FORM -->
           <div class="col-12 col-lg-7">
             <div class="cart-container border px-3 pt-3">
               <h1 class="bg-black text-white text-uppercase mb-3">shipping</h1>
@@ -142,7 +143,7 @@
                         placeholder="example@gmail.com"
                       />
                     </div>
-                    <div class="col-6">
+                    <div class="col-12">
                       <label for="phoneNumber" class="form-label">Phone</label>
                       <input
                         type="tel"
@@ -151,7 +152,7 @@
                         placeholder="123-456-789-10"
                       />
                     </div>
-                    <div class="col-6">
+                    <div class="col-12">
                       <label for="phoneNumber2" class="form-label"
                         >Phone 2</label
                       >
@@ -240,61 +241,7 @@
           <div class="col-12 col-lg-5 order-0">
             <div class="border px-3 pt-1 pb-3 bg-body-tertiary">
               <p class="fw-bold fs-4">Your order</p>
-              <div class="row">
-                <div class="col-12">
-                  <div class="cart-item-container">
-                    <div class="cart-item--image">
-                      <img
-                        src="./assets/brands/calvin-klein.jpeg"
-                        alt="product image"
-                        class="rounded-2 img-fit"
-                      />
-                    </div>
-                    <div class="cart-item--details pe-3">
-                      <div
-                        class="c-row d-flex justify-content-between align-items-center"
-                      >
-                        <p class="fw-bolder fs-5">Product Name</p>
-                      </div>
-                      <div class="cart-item-qty">
-                        <p class="lead">1x</p>
-                      </div>
-                      <div
-                        class="c-row d-flex justify-content-between align-items-center"
-                      >
-                        <p class="fw-bolder fs-2">$145</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12">
-                  <div class="cart-item-container">
-                    <div class="cart-item--image">
-                      <img
-                        src="https://via.placeholder.com/200x200"
-                        alt="product image"
-                        class="rounded-2"
-                        width="200"
-                        height="200"
-                      />
-                    </div>
-                    <div class="cart-item--details pe-3">
-                      <div
-                        class="c-row d-flex justify-content-between align-items-center"
-                      >
-                        <p class="fw-bolder fs-5">Product Name</p>
-                      </div>
-                      <div class="cart-item-qty">
-                        <p class="lead">2x</p>
-                      </div>
-                      <div
-                        class="c-row d-flex justify-content-between align-items-center"
-                      >
-                        <p class="fw-bolder fs-2">$300</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div class="row js-preview-container">
               </div>
               <div class="row mt-3 border-top pt-3">
                 <h4>Payment Method</h4>
@@ -440,6 +387,6 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
-    <script src="./main.js"></script>
+    <script type="module" src="./js/check-out.js"></script>
   </body>
 </html>
