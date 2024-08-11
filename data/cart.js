@@ -1,4 +1,13 @@
-export const cart = [];
+export const cart = [
+  {
+    productId: "1",
+    quantity: 2,
+  },
+  {
+    productId: "14",
+    quantity: 1,
+  },
+];
 
 export function updateCart(icons, cartQty, counter) {
   icons.forEach((icon) => {

@@ -1,6 +1,6 @@
 import { convertToTens } from "../utils/rating.js";
 const url = "https://fakestoreapi.com/products";
-const products = [];
+export const products = [];
 
 export async function getProducts() {
   try {
