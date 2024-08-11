@@ -11,8 +11,9 @@ async function loadPage() {
 loadPage();
 
 function renderOrderSummary() {
+  console.log(cart);
   cart.forEach((cartItem) => {
-    const productId = cartItem.id;
+    const productId = cartItem.productId;
     const matchingProduct = getProductId(productId);
 
     const { image, price, title } = matchingProduct;
