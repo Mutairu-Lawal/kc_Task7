@@ -1,5 +1,5 @@
 import { Products, getData } from "../data/product.js";
-import { cart } from "../data/cart.js";
+import { cart, clearCartFromStorage } from "../data/cart.js";
 
 const previewContainer = document.querySelector(".js-preview-container");
 let summaryHTML = "";
@@ -48,6 +48,10 @@ function renderOrderSummary() {
   });
 
   previewContainer.innerHTML = summaryHTML;
+  document.querySelector(".js-place-order").addEventListener("click", (e) => {
+    e.preventDefault();
+    clearCartFromStorage();
+  });
 }
 
 function getProductId(productId) {
