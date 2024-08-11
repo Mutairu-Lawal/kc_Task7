@@ -9,7 +9,9 @@ export const cart = [
   },
 ];
 
-export function updateCart(icons, cartQty, counter) {
+export function updateCart(icons, counter) {
+  let cartQty = cart.length;
+
   icons.forEach((icon) => {
     icon.addEventListener("click", () => {
       open("./check-out-page.html", "_blank");

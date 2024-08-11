@@ -170,13 +170,6 @@ main {
   background-image: url(../assets/categories/gym.png);
 }
 
-.product-added-status {
-  display: none;
-}
-.product-added {
-  display: flex;
-}
-
 /* FOOTER SECTION  */
 
 footer .footer--social-links a {
