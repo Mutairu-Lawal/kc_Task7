@@ -19,13 +19,15 @@ export function addToCart(productId) {
   }
 
   saveCartToStorage();
-  console.log(cart);
 }
 
 function saveCartToStorage() {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
+export function clearCartFromStorage() {
+  localStorage.removeItem("cart");
+}
 export function updateCart(icons, totalCount) {
   let cartQty = 0;
 
@@ -38,8 +40,6 @@ export function updateCart(icons, totalCount) {
   cart.forEach((item) => {
     cartQty += item.quantity;
   });
-
-  console.log(cartQty);
 
   if (cartQty != 0) {
     totalCount.forEach((count) => {

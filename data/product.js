@@ -1,6 +1,8 @@
-export let Products = JSON.parse(localStorage.getItem("products")) || [];
+// export let Products = JSON.parse(localStorage.getItem("products")) || [];
+export let Products = [];
+const url = "https://fakestoreapi.com/products";
 
-async function getData() {
+export async function getData() {
   try {
     const res = await fetch(url);
     if (res.status >= 400) {

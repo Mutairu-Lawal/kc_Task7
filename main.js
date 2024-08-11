@@ -1,12 +1,14 @@
-import { Products } from "./data/product.js";
-import { addToCart, updateCart } from "./data/cart.js";
+import { Products, getData } from "./data/product.js";
+import { addToCart, updateCart, clearCartFromStorage } from "./data/cart.js";
 import { productHTML } from "./utils/productHtml.js";
 
-function loadPage() {
+async function loadPage() {
   const totalCart = document.querySelectorAll(".nav--cart-counter");
   const cartIcons = document.querySelectorAll(".cart-icon");
 
   updateCart(cartIcons, totalCart);
+
+  await getData();
 
   const newArray = [];
 
@@ -33,6 +35,7 @@ function loadPage() {
       statusMessage.classList.toggle("d-none");
     });
   });
+  clearCartFromStorage();
 }
 
 loadPage();
