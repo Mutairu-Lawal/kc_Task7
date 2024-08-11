@@ -1,25 +1,23 @@
-import { demoCart } from "../data/cart.js";
-const product = JSON.parse(localStorage.getItem("products"));
-const orderCart = [];
+import { cart } from "../data/cart.js";
+import { getData, Products } from "../data/product.js";
+
 const cartContainer = document.querySelector(".js-cart-container");
 
 let cartSummaryHTML = "";
 
-function loadCart() {
-  orderSummary();
+async function loadCart() {
+  await getData();
+  renderOrderSummary();
+  renderPaymentSummary();
 }
 
 loadCart();
 
-function orderSummary() {
-  demoCart.forEach((cartItem) => {
+function renderOrderSummary() {
+  cart.forEach((cartItem) => {
     const productId = cartItem.productId;
-    let matchingProduct;
-    product.forEach((product) => {
-      if (product.id == productId) {
-        matchingProduct = product;
-      }
-    });
+
+    const matchingProduct = getProductId(cartItem.productId);
 
     const { image, price, title } = matchingProduct;
 
@@ -66,4 +64,66 @@ function orderSummary() {
   cartContainer.innerHTML = cartSummaryHTML;
 }
 
-function paymentSummary() {}
+function renderPaymentSummary() {
+  let productTotal = 0;
+  cart.forEach((cartItem) => {
+    const product = getProductId(cartItem.productId);
+    productTotal += (convertToCents(product.price) * cartItem.quantity) / 100;
+  });
+  const discountPercentage = Math.round(productTotal * 0.1).toFixed(2);
+  const grandTotal = productTotal - discountPercentage + 15;
+
+  document.querySelector(".js-cart-summary").innerHTML = `
+  <div class="c-row d-flex justify-content-between mb-3">
+                  <p>Subtotal (${getTotalCart(cart)})</p>
+                  <p class="fw-bold">$<span>${productTotal}</span></p>
+                </div>
+                <div class="c-row d-flex justify-content-between mb-3">
+                  <p>Discount (-10%)</p>
+                  <p class="fw-bold text-danger">-$<span>${discountPercentage}</span></p>
+                </div>
+                <div class="c-row d-flex justify-content-between mb-3">
+                  <p>Delivery Fee</p>
+                  <p class="fw-bold">$<span>15</span></p>
+                </div>
+                <hr />
+                <div class="c-row d-flex justify-content-between mb-3">
+                  <p>Total</p>
+                  <p class="fw-bolder fs-5">$<span>${grandTotal}</span></p>
+                </div>
+                <div class="row">
+                  <div class="col-12 mt-1 d-grid">
+                    <a
+                      href="./check-out-page.html"
+                      class="btn bg-black text-white rounded-pill fw-bold"
+                    >
+                      Go to Checkout
+                      <i class="fa-solid fa-arrow-right ms-1"></i>
+                    </a>
+                  </div>
+                </div>`;
+}
+
+function getProductId(productId) {
+  let matchingProduct;
+  Products.forEach((product) => {
+    if (product.id == productId) {
+      matchingProduct = product;
+    }
+  });
+
+  return matchingProduct;
+}
+
+function convertToCents(price) {
+  return Math.round(price * 100);
+}
+
+function getTotalCart(cart) {
+  let qty = 0;
+  cart.forEach((item) => {
+    qty += item.quantity;
+  });
+
+  return qty;
+}

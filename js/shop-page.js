@@ -27,7 +27,7 @@ async function loadPage() {
       statusMessage.classList.toggle("d-none");
     });
   });
-  clearCartFromStorage();
+  // clearCartFromStorage();
 }
 
 loadPage();
