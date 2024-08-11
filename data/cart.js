@@ -1,4 +1,4 @@
-export const cart = [
+export let cart = [
   {
     productId: "1",
     quantity: 2,
@@ -9,8 +9,14 @@ export const cart = [
   },
 ];
 
-export function updateCart(icons, counter) {
-  let cartQty = cart.length;
+export function updateCart(icons, totalCount) {
+  let cartQty = 0;
+
+  if (cart.length != 0) {
+    cart.forEach((item) => {
+      cartQty += item.quantity;
+    });
+  }
 
   icons.forEach((icon) => {
     icon.addEventListener("click", () => {
@@ -18,15 +24,14 @@ export function updateCart(icons, counter) {
     });
   });
 
-  if (cart.length <= 0) {
-    cartQty.forEach((cartQty) => {
-      counter.classList.add("d-none");
+  if (cartQty != 0) {
+    totalCount.forEach((count) => {
+      count.classList.toggle("d-none");
+      count.innerHTML = cartQty;
     });
   }
 
-  cart.forEach((item) => {
-    cartQty.innerHTML = cartQuantity + item.quantity;
-  });
+  console.log(cartQty);
 }
 
 export function addToCart(productId) {

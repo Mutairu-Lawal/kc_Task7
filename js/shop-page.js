@@ -1,8 +1,12 @@
 import { Products } from "../data/product.js";
-import { cart, addToCart } from "../data/cart.js";
+import { addToCart, updateCart } from "../data/cart.js";
 import { productHTML } from "../utils/productHtml.js";
 
 function loadPage() {
+  const totalCart = document.querySelectorAll(".nav--cart-counter");
+  const cartIcons = document.querySelectorAll(".cart-icon");
+
+  updateCart(cartIcons, totalCart);
   document.querySelector(".js-product-container").innerHTML =
     productHTML(Products);
 
