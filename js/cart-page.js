@@ -6,9 +6,19 @@ const cartContainer = document.querySelector(".js-cart-container");
 let cartSummaryHTML = "";
 
 async function loadCart() {
-  await getData();
-  renderOrderSummary();
-  renderPaymentSummary();
+  try {
+    const icons = document.querySelectorAll(".nav--cart-icon");
+    icons.forEach((i) => {
+      if (!i.classList.contains("d-none")) {
+        i.classList.add("d-none");
+      }
+    });
+    await getData();
+    renderOrderSummary();
+    renderPaymentSummary();
+  } catch (error) {
+    console.error("Error loading cart");
+  }
 }
 
 loadCart();
