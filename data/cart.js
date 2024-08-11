@@ -43,7 +43,7 @@ export function updateCart(icons, totalCount) {
 
   if (cartQty != 0) {
     totalCount.forEach((count) => {
-      count.classList.toggle("d-none");
+      count.classList.remove("d-none");
       count.innerHTML = cartQty;
     });
   }

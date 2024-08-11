@@ -1,5 +1,5 @@
 import { Products, getData } from "./data/product.js";
-import { addToCart, updateCart, clearCartFromStorage } from "./data/cart.js";
+import { addToCart, updateCart } from "./data/cart.js";
 import { productHTML } from "./utils/productHtml.js";
 
 async function loadPage() {
@@ -7,35 +7,36 @@ async function loadPage() {
   const cartIcons = document.querySelectorAll(".cart-icon");
 
   updateCart(cartIcons, totalCart);
-
-  await getData();
-
   const newArray = [];
 
-  for (let i = 0; i <= 4; i++) {
-    newArray.push(Products[i]);
-  }
+  try {
+    await getData();
 
-  document.querySelector(".js-product-container").innerHTML =
-    productHTML(newArray);
+    for (let i = 0; i <= 4; i++) {
+      newArray.push(Products[i]);
+    }
 
-  const addToCartButtons = document.querySelectorAll(".js-add-to-cart");
-  addToCartButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const { productId } = button.dataset;
-      const statusMessage = document.querySelector(
-        `.js-added-status-${productId}`
-      );
-      addToCart(productId);
-      updateCart(cartIcons, totalCart);
+    document.querySelector(".js-product-container").innerHTML =
+      productHTML(newArray);
 
-      setTimeout(() => {
+    const addToCartButtons = document.querySelectorAll(".js-add-to-cart");
+    addToCartButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const { productId } = button.dataset;
+        const statusMessage = document.querySelector(
+          `.js-added-status-${productId}`
+        );
+        addToCart(productId);
+        updateCart(cartIcons, totalCart);
+        setTimeout(() => {
+          statusMessage.classList.toggle("d-none");
+        }, 1000);
         statusMessage.classList.toggle("d-none");
-      }, 1000);
-      statusMessage.classList.toggle("d-none");
+      });
     });
-  });
-  clearCartFromStorage();
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 loadPage();
