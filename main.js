@@ -7,6 +7,7 @@ function loadPage() {
   const cartIcons = document.querySelectorAll(".cart-icon");
 
   updateCart(cartIcons, totalCart);
+
   const newArray = [];
 
   for (let i = 0; i <= 4; i++) {
@@ -24,6 +25,8 @@ function loadPage() {
         `.js-added-status-${productId}`
       );
       addToCart(productId);
+      updateCart(cartIcons, totalCart);
+
       setTimeout(() => {
         statusMessage.classList.toggle("d-none");
       }, 1000);

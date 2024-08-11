@@ -1,38 +1,4 @@
-export let cart = [
-  {
-    productId: "1",
-    quantity: 2,
-  },
-  {
-    productId: "14",
-    quantity: 1,
-  },
-];
-
-export function updateCart(icons, totalCount) {
-  let cartQty = 0;
-
-  if (cart.length != 0) {
-    cart.forEach((item) => {
-      cartQty += item.quantity;
-    });
-  }
-
-  icons.forEach((icon) => {
-    icon.addEventListener("click", () => {
-      open("./check-out-page.html", "_blank");
-    });
-  });
-
-  if (cartQty != 0) {
-    totalCount.forEach((count) => {
-      count.classList.toggle("d-none");
-      count.innerHTML = cartQty;
-    });
-  }
-
-  console.log(cartQty);
-}
+export let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 export function addToCart(productId) {
   let matchingItem;
@@ -51,5 +17,34 @@ export function addToCart(productId) {
       quantity: 1,
     });
   }
+
+  saveCartToStorage();
   console.log(cart);
+}
+
+function saveCartToStorage() {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+export function updateCart(icons, totalCount) {
+  let cartQty = 0;
+
+  icons.forEach((icon) => {
+    icon.addEventListener("click", () => {
+      open("./check-out-page.html", "_blank");
+    });
+  });
+
+  cart.forEach((item) => {
+    cartQty += item.quantity;
+  });
+
+  console.log(cartQty);
+
+  if (cartQty != 0) {
+    totalCount.forEach((count) => {
+      count.classList.toggle("d-none");
+      count.innerHTML = cartQty;
+    });
+  }
 }

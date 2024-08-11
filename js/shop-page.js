@@ -18,6 +18,8 @@ function loadPage() {
         `.js-added-status-${productId}`
       );
       addToCart(productId);
+      updateCart(cartIcons, totalCart);
+
       setTimeout(() => {
         statusMessage.classList.toggle("d-none");
       }, 1000);
