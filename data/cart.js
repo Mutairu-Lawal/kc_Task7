@@ -1,5 +1,16 @@
 export let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
+export const demoCart = [
+  {
+    productId: "1",
+    quantity: 1,
+  },
+  {
+    productId: "12",
+    quantity: 2,
+  },
+];
+
 export function addToCart(productId) {
   let matchingItem;
 
@@ -33,7 +44,7 @@ export function updateCart(icons, totalCount) {
 
   icons.forEach((icon) => {
     icon.addEventListener("click", () => {
-      open("./check-out-page.html", "_blank");
+      open("../add-to-cart-page.html", "_blank");
     });
   });
 
