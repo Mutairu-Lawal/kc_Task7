@@ -68,10 +68,11 @@ function renderPaymentSummary() {
   let productTotal = 0;
   cart.forEach((cartItem) => {
     const product = getProductId(cartItem.productId);
-    productTotal += (convertToCents(product.price) * cartItem.quantity) / 100;
+    productTotal += product.price * cartItem.quantity;
   });
-  const discountPercentage = Math.round(productTotal * 0.1).toFixed(2);
-  const grandTotal = productTotal - discountPercentage + 15;
+  productTotal = productTotal.toFixed(2);
+  const discountPercentage = (productTotal * 0.1).toFixed(2);
+  const grandTotal = (productTotal - discountPercentage + 15).toFixed(2);
 
   document.querySelector(".js-cart-summary").innerHTML = `
   <div class="c-row d-flex justify-content-between mb-3">
@@ -113,10 +114,6 @@ function getProductId(productId) {
   });
 
   return matchingProduct;
-}
-
-function convertToCents(price) {
-  return Math.round(price * 100);
 }
 
 function getTotalCart(cart) {

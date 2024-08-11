@@ -12,7 +12,6 @@ export async function getData() {
       data.forEach((product) => {
         Products.push(product);
       });
-      console.log("done");
     }
   } catch (er) {
     console.log("Unexpected error, Please try again Later.");
