@@ -1,5 +1,6 @@
 import { Products, getData } from "../data/product.js";
 import { cart, clearCartFromStorage } from "../data/cart.js";
+import { getFooterHTML } from "../utils/footer.js";
 
 const previewContainer = document.querySelector(".js-preview-container");
 let summaryHTML = "";
@@ -22,7 +23,7 @@ function renderOrderSummary() {
 
     summaryHTML += `<div class="col-12 ">
                   <div class="cart-item-container">
-                    <div class="cart-item--image">
+                    <div class="cart-item--image border bg-white p-2">
                       <img
                         src="${image}"
                         alt="${title} image"
@@ -65,3 +66,5 @@ function getProductId(productId) {
 
   return matchingProduct;
 }
+
+document.querySelector(".js-footer-container").innerHTML = getFooterHTML();

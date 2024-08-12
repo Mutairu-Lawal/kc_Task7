@@ -1,9 +1,9 @@
 import { cart } from "../data/cart.js";
+import { getFooterHTML } from "../utils/footer.js";
 import { getData, Products } from "../data/product.js";
-
 const cartContainer = document.querySelector(".js-cart-container");
-
 let cartSummaryHTML = "";
+document.querySelector(".js-footer-container").innerHTML = getFooterHTML();
 
 async function loadCart() {
   try {

@@ -1,11 +1,11 @@
 import { Products, getData } from "./data/product.js";
 import { addToCart, updateCart } from "./data/cart.js";
 import { productHTML } from "./utils/productHtml.js";
+import { getFooterHTML } from "./utils/footer.js";
 
 async function loadPage() {
   const totalCart = document.querySelectorAll(".nav--cart-counter");
   const cartIcons = document.querySelectorAll(".cart-icon");
-
   updateCart(cartIcons, totalCart);
   const newArray = [];
 
@@ -40,3 +40,5 @@ async function loadPage() {
 }
 
 loadPage();
+
+document.querySelector(".js-footer-container").innerHTML = getFooterHTML();
