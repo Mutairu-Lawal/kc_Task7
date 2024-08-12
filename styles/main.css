@@ -151,16 +151,13 @@ main {
   background-size: cover;
 }
 
-.text-sec-color {
-  color: var(--sec-color);
-}
-
 .card--clothing {
   background-image: url(../assets/categories/clothing.jpg);
 }
 
 .card--self-care {
   background-image: url(../assets/categories/self-care.jpg);
+  background-position: center;
 }
 
 .card--electronics {
