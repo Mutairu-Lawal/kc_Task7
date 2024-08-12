@@ -16,6 +16,11 @@ async function loadCart() {
     await getData();
     renderOrderSummary();
     renderPaymentSummary();
+    const decreaseBtns = document.querySelectorAll(".js-decrease-btn");
+    const increaseBtns = document.querySelectorAll(".js-increase-btn");
+
+    controlBtns(decreaseBtns);
+    controlBtns(increaseBtns);
   } catch (error) {
     console.error("Error loading cart");
   }
@@ -29,7 +34,7 @@ function renderOrderSummary() {
 
     const matchingProduct = getProductId(cartItem.productId);
 
-    const { image, price, title } = matchingProduct;
+    const { image, price, title, id } = matchingProduct;
 
     cartSummaryHTML += `<div class="cart-item-container">
                 <div class="cart-item--image">
@@ -55,13 +60,13 @@ function renderOrderSummary() {
                     <div
                       class="quantity-control d-flex bg-body-tertiary px-3 rounded-pill py-2  d-flex justify-content-between"
                     >
-                      <div class="decrease-btn me-2 icon-btn">
+                      <div class="decrease-btn me-2 icon-btn js-decrease-btn" data-product-id="${id}">
                         <i class="fa-solid fa-minus"></i>
                       </div>
-                      <div class="quantity-value fw-bold">${
-                        cartItem.quantity
-                      }</div>
-                      <div class="increase-btn ms-2 icon-btn">
+                      <div class="quantity-value fw-bold js-quantity-value" data-product-id='${id}'>${
+      cartItem.quantity
+    }</div>
+                      <div class="increase-btn ms-2 icon-btn js-increase-btn" data-product-id="${id}">
                         <i class="fa-solid fa-plus"></i>
                       </div>
                     </div>
@@ -136,4 +141,12 @@ function getTotalCart(cart) {
   });
 
   return qty;
+}
+
+function controlBtns(btns) {
+  btns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const { productId } = btn.dataset;
+    });
+  });
 }
