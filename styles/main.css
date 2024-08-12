@@ -151,23 +151,26 @@ main {
   background-size: cover;
 }
 
-.card--causal-dressing {
-  background-image: url(../assets/categories/causaul.png);
+.text-sec-color {
+  color: var(--sec-color);
 }
 
-.card--formal-dressing {
-  background-image: url(../assets/categories/formal.png);
-  background-color: var(--pry-color);
+.card--clothing {
+  background-image: url(../assets/categories/clothing.jpg);
 }
 
-.card--party-dressing {
-  background-image: url(../assets/categories/party.jpg);
-  background-position: right right;
+.card--self-care {
+  background-image: url(../assets/categories/self-care.jpg);
+}
+
+.card--electronics {
+  background-image: url(../assets/categories/electonics.jpg);
+  background-position: center;
   color: var(--pry-color);
 }
 
-.card--gym-dressing {
-  background-image: url(../assets/categories/gym.png);
+.card--interior {
+  background-image: url(../assets/categories/house-hold.jpg);
 }
 
 /* FOOTER SECTION  */
