@@ -21,7 +21,7 @@ export function addToCart(productId) {
   saveCartToStorage();
 }
 
-function saveCartToStorage() {
+export function saveCartToStorage() {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
