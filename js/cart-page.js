@@ -71,7 +71,10 @@ function renderOrderSummary() {
                   <div
                     class="c-row d-flex justify-content-between align-items-center"
                   >
-                    <p class="fw-bolder fs-5">$${price.toFixed(2)}</p>
+                    <p class="fw-bolder fs-5">${new Intl.NumberFormat("en-NG", {
+                      style: "currency",
+                      currency: "NGN",
+                    }).format(price)}</p>
                     <div
                       class="quantity-control d-flex bg-body-tertiary px-3 rounded-pill py-2  d-flex justify-content-between"
                     >
@@ -110,20 +113,38 @@ function renderPaymentSummary() {
   document.querySelector(".js-cart-summary").innerHTML = `
   <div class="c-row d-flex justify-content-between mb-3">
                   <p>Subtotal (${getTotalCart(cart)})</p>
-                  <p class="fw-bold">$<span>${productTotal}</span></p>
+                  <p class="fw-bold"><span>${new Intl.NumberFormat("en-NG", {
+                    style: "currency",
+                    currency: "NGN",
+                  }).format(productTotal)}</span></p>
                 </div>
                 <div class="c-row d-flex justify-content-between mb-3">
                   <p>Discount (-10%)</p>
-                  <p class="fw-bold text-danger">-$<span>${discountPercentage}</span></p>
+                  <p class="fw-bold text-danger">-<span>${new Intl.NumberFormat(
+                    "en-NG",
+                    {
+                      style: "currency",
+                      currency: "NGN",
+                    }
+                  ).format(discountPercentage)}</span></p>
                 </div>
                 <div class="c-row d-flex justify-content-between mb-3">
                   <p>Delivery Fee</p>
-                  <p class="fw-bold">$<span>${deliveryFee}</span></p>
+                  <p class="fw-bold"><span>${new Intl.NumberFormat("en-NG", {
+                    style: "currency",
+                    currency: "NGN",
+                  }).format(deliveryFee)}</span></p>
                 </div>
                 <hr />
                 <div class="c-row d-flex justify-content-between mb-3">
                   <p>Total</p>
-                  <p class="fw-bolder fs-5">$<span>${grandTotal}</span></p>
+                  <p class="fw-bolder fs-5"><span>${new Intl.NumberFormat(
+                    "en-NG",
+                    {
+                      style: "currency",
+                      currency: "NGN",
+                    }
+                  ).format(grandTotal)}</span></p>
                 </div>
                 <div class="row">
                   <div class="col-12 mt-1 d-grid">

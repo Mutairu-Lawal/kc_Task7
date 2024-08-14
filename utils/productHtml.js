@@ -35,9 +35,13 @@ export function productHTML(p) {
                 </div>
                   <div class="product-count ms-2 small mt-1 fw-semibold">${count}</div>
                 </div>
-                <h4 class="product price fw-bolder mb-1">$${price.toFixed(
-                  2
-                )}</h4>
+                <h4 class="product price fw-bolder mb-1">${new Intl.NumberFormat(
+                  "en-NG",
+                  {
+                    style: "currency",
+                    currency: "NGN",
+                  }
+                ).format(price)}</h4>
                 <div class="product-added-status text-center my-1 fw-bold centered js-added-status-${id} d-none">
                   <i class="fa-solid fa-circle-check me-2 fs-2"></i>
                   Added

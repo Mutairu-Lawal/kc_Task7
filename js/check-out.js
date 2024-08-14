@@ -42,7 +42,13 @@ function renderOrderSummary() {
                       <div
                         class="c-row d-flex justify-content-between align-items-center"
                       >
-                        <p class="fw-bolder fs-4">${total}</p>
+                        <p class="fw-bolder fs-4">${new Intl.NumberFormat(
+                          "en-NG",
+                          {
+                            style: "currency",
+                            currency: "NGN",
+                          }
+                        ).format(total)}</p>
                       </div>
                     </div>
                   </div>
