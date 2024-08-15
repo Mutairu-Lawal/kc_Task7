@@ -11,7 +11,7 @@ const appendAlert = (message, type) => {
   wrapper.innerHTML = [
     `<div class="alert alert-${type} alert-dismissible" role="alert">`,
     `   <div>${message}</div>`,
-    '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+    '   <button type="button" class="btn-close js-btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
     "</div>",
   ].join("");
 
@@ -33,6 +33,9 @@ if (alertTrigger) {
                         </p>`,
       "success"
     );
+    document.querySelector(".js-btn-close").addEventListener("click", () => {
+      location.reload();
+    });
   });
 }
 
