@@ -82,7 +82,7 @@
             </button>
           </form>
         </div>
-        <div class="nav--cart-icon ms-sm-4 d-none d-lg-flex done">
+        <div class="nav--cart-icon ms-sm-4 d-none">
           <img
             width="30"
             height="30"
@@ -289,8 +289,12 @@
                       />
                     </div>
                     <div class="col-12 d-grid">
+                      <div id="liveAlertPlaceholder"></div>
+
                       <button
                         class="btn bg-black text-white rounded-pill fw-bold js-place-order"
+                        type="button"
+                        id="liveAlertBtn"
                       >
                         Place Order
                       </button>

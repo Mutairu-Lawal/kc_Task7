@@ -33,7 +33,7 @@ export function updateCart(icons, totalCount) {
 
   icons.forEach((icon) => {
     icon.addEventListener("click", () => {
-      open("../add-to-cart-page.html", "_blank");
+      open("../add-to-cart-page.html", "_self");
     });
   });
 
